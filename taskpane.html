@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>网页查看器插件</title>
+  <style>
+    body { font-family: sans-serif; padding: 10px; }
+    input { width: 90%; padding: 5px; font-size: 16px; }
+    iframe { width: 100%; height: 500px; border: none; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h3>输入网址（例如 https://echarts.apache.org/examples）</h3>
+  <input id="urlInput" type="text" placeholder="请输入网址..." onkeydown="onKey(event)" />
+  <iframe id="iframe" src=""></iframe>
+
+  <script>
+    function loadUrl(url) {
+      if (!/^https?:\/\//i.test(url)) {
+        alert("请输入包含 http:// 或 https:// 的完整网址");
+        return;
+      }
+      document.getElementById("iframe").src = url;
+    }
+
+    function onKey(e) {
+      if (e.key === "Enter") {
+        const url = e.target.value.trim();
+        loadUrl(url);
+      }
+    }
+  </script>
+</body>
+</html>
